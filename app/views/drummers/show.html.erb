@@ -1,60 +1,62 @@
-<section class="page-section bg-light" id="drummers">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-3 text-center">
-        <div class="team-member">
-          <% if @drummer.image_urls.present? %>
-            <%= image_tag @drummer.image_urls.first, class: 'rounded-circle' %>
-          <% else %>
-            <%= image_tag 'no-image.jpg', class: 'rounded-circle' %>
-          <% end %>
-        </div>
-      </div>
-      <div class="col-lg-9 text-start">
-        <h4 class="pt-3"><%= @drummer.name %></h4>
-        <% @drummer.artists.each do |artist| %>
-          <div class="badge bg-info mt-2">
-            <%= artist.name %>
+<%= turbo_frame_tag 'drummers-list' do %>
+  <section class="page-section bg-light" id="drummers">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3 text-center">
+          <div class="team-member">
+            <% if @drummer.image_urls.present? %>
+              <%= image_tag @drummer.image_urls.first, class: 'rounded-circle' %>
+            <% else %>
+              <%= image_tag 'no-image.jpg', class: 'rounded-circle' %>
+            <% end %>
           </div>
-        <% end %>
-        <div class="mt-2">
-          <% @drummer.genres.each do |genre| %>
-            <div class="badge bg-secondary">
-              <%= genre.name %>
+        </div>
+        <div class="col-lg-9 text-start">
+          <h4 class="pt-3"><%= @drummer.name %></h4>
+          <% @drummer.artists.each do |artist| %>
+            <div class="badge bg-info mt-2">
+              <%= artist.name %>
             </div>
           <% end %>
-        </div>
-        <p class="pt-3"><%= @drummer.profile %></p>
-        <div class="text-end">
-          <p><%= t('.wikipedia') %></p>
-        </div>
-        <div data-controller="youtube" class="justify-content-center text-start pt-3">
-          <div id="video-container" class="responsive-iframe-container">
-            <iframe id="video-iframe" src="https://www.youtube.com/embed/<%= @drummer.youtube_videos.first %>" frameborder="0" allowfullscreen></iframe>
+          <div class="mt-2">
+            <% @drummer.genres.each do |genre| %>
+              <div class="badge bg-secondary">
+                <%= genre.name %>
+              </div>
+            <% end %>
           </div>
-          <div id="thumbnail-container" data-youtube-target="thumbnails" class="thumbnail-container">
-            <ul class="thumbnail pt-3">
-              <% @drummer.youtube_videos.each do |video_id| %>
-                <li data-action="click->youtube#changeVideo" data-video-id="<%= video_id %>">
-                  <img src="https://img.youtube.com/vi/<%= video_id %>/0.jpg" alt="Thumbnail">
-                </li>
-              <% end %>
-            </ul>
+          <p class="pt-3"><%= @drummer.profile %></p>
+          <div class="text-end">
+            <p><%= t('.wikipedia') %></p>
           </div>
-        </div>
+          <div data-controller="youtube" class="justify-content-center text-start pt-3">
+            <div id="video-container" class="responsive-iframe-container">
+              <iframe id="video-iframe" src="https://www.youtube.com/embed/<%= @drummer.youtube_videos.first %>" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div id="thumbnail-container" data-youtube-target="thumbnails" class="thumbnail-container">
+              <ul class="thumbnail pt-3">
+                <% @drummer.youtube_videos.each do |video_id| %>
+                  <li data-action="click->youtube#changeVideo" data-video-id="<%= video_id %>">
+                    <img src="https://img.youtube.com/vi/<%= video_id %>/0.jpg" alt="Thumbnail">
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
 
-        <% @drummer.artists.each do |artist| %>
-          <% if artist.album_image.present? && artist.album_url.present? %>
-            <div class="border-bottom border-5 pt-3 mb-3 w-60">
-              <h4><%= artist.name %><i class="bi bi-spotify px-2"></i></h4>
-            </div>
+          <% @drummer.artists.each do |artist| %>
+            <% if artist.album_image.present? && artist.album_url.present? %>
+              <div class="border-bottom border-5 pt-3 mb-3 w-60">
+                <h4><%= artist.name %><i class="bi bi-spotify px-2"></i></h4>
+              </div>
 
-            <div class="album-img">
-              <%= link_to image_tag(artist.album_image), artist.album_url, target: "_blank" %>
-            </div>
+              <div class="album-img">
+                <%= link_to image_tag(artist.album_image), artist.album_url, target: "_blank" %>
+              </div>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+<% end %>

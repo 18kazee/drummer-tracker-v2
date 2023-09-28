@@ -5,3 +5,6 @@ ja:
       describe: ドラマー一覧
     show:
       wikipedia: 'ウィキペディア (Wikipedia): フリー百科事典'
+    search:
+      title: Search
+      describe: ドラマー検索

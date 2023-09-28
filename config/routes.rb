@@ -6,7 +6,11 @@ Rails.application.routes.draw do
 
   root 'tops#index'
 
-  resources :drummers, only: [:index, :show]
+  resources :drummers, only: [:index, :show] do
+    collection do
+      get :search
+    end
+  end
   resources :users, only: [:new, :create, :show, :edit, :update] do
     member do
       get :activate

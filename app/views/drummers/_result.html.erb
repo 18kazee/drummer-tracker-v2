@@ -1,0 +1,41 @@
+<%= turbo_frame_tag 'drummers-list', data: { turbo_action: "advance" } do %>
+  <div class="container">
+    <% if params[:q].present? && @drummers.any? %>
+      <div class="row pt-5">
+        <% @drummers.each do |drummer| %>
+          <div class="col-lg-4">
+            <div class="team-member">
+              <div class="mx-auto">
+                <% if drummer.image_urls.present? %>
+                  <%= link_to drummer_path(drummer) do %>
+                    <%= image_tag drummer.image_urls.first, class: 'rounded-circle' %>
+                  <% end %>
+                <% else %>
+                  <%= link_to drummer_path(drummer) do %>
+                    <%= image_tag 'no-image.jpg', class: 'rounded-circle' %>
+                  <% end %>
+                <% end %>
+              </div>
+            
+              <h4><%= drummer.name %></h4>
+
+              <% drummer.artists.each do |artist| %>
+                <div class="badge bg-secondary">
+                  <%= artist.name %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="pt-5 justify-content-center d-flex">
+        <%= paginate @drummers, theme: 'bootstrap-5' %>
+      </div>
+      <% elsif params[:q].present? %>
+        <div class="text-center">
+          <p><%= t('defaults.message.no_result') %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
