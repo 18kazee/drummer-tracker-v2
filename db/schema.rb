@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_28_044524) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_28_053558) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -41,6 +41,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_28_044524) do
     t.index ["drummer_id"], name: "index_drummer_artists_on_drummer_id"
   end
 
+  create_table "drummer_genres", force: :cascade do |t|
+    t.bigint "drummer_id", null: false
+    t.bigint "genre_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["drummer_id"], name: "index_drummer_genres_on_drummer_id"
+    t.index ["genre_id"], name: "index_drummer_genres_on_genre_id"
+  end
+
   create_table "drummers", force: :cascade do |t|
     t.string "name", null: false
     t.integer "country", null: false
@@ -48,6 +57,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_28_044524) do
     t.string "youtube_videos", default: [], array: true
     t.string "discogs_id"
     t.string "image_urls", default: [], array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "genres", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -76,4 +91,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_28_044524) do
 
   add_foreign_key "drummer_artists", "artists"
   add_foreign_key "drummer_artists", "drummers"
+  add_foreign_key "drummer_genres", "drummers"
+  add_foreign_key "drummer_genres", "genres"
 end
