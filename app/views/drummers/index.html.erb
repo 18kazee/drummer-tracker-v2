@@ -15,6 +15,7 @@
     <% @drummers.each do |drummer| %>
       <div class="col-lg-4">
         <div class="team-member">
+
           <div class="mx-auto">
             <% if drummer.image_urls.present? %>
               <%= link_to drummer_path(drummer) do %>
@@ -26,7 +27,15 @@
               <% end %>
             <% end %>
           </div>
+          
           <h4><%= drummer.name %></h4>
+
+          <% drummer.artists.each do |artist| %>
+            <div class="badge bg-secondary">
+              <%= artist.name %>
+            </div>
+          <% end %>
+
         </div>
       </div>
     <% end %>

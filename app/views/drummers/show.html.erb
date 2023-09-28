@@ -8,10 +8,17 @@
       <% end %>
       <h4><%= @drummer.name %></h4>
       <% @drummer.artists.each do |artist| %>
-        <div class="badge bg-info mt-3">
+        <div class="badge bg-info mt-2">
           <%= artist.name %>
         </div>
       <% end %>
+      <div class="mt-2">
+        <% @drummer.genres.each do |genre| %>
+          <div class="badge bg-secondary">
+            <%= genre.name %>
+          </div>
+        <% end %>
+      </div>
       <p class="pt-3"><%= @drummer.profile %></p>
       <div class="text-end">
         <p><%= t('.wikipedia') %></p>
