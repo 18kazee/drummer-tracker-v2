@@ -28,19 +28,21 @@
         <div class="text-end">
           <p><%= t('.wikipedia') %></p>
         </div>
-      <div data-controller="youtube" class="justify-content-center text-start pt-3">
-        <div id="video-container" class="">
-          <iframe id="video-iframe" src="https://www.youtube.com/embed/<%= @drummer.youtube_videos.first %>" frameborder="0" allowfullscreen width="500" height="300"></iframe>
+        <div data-controller="youtube" class="justify-content-center text-start pt-3">
+          <div id="video-container" class="responsive-iframe-container">
+            <iframe id="video-iframe" src="https://www.youtube.com/embed/<%= @drummer.youtube_videos.first %>" frameborder="0" allowfullscreen></iframe>
+          </div>
+          <div id="thumbnail-container" data-youtube-target="thumbnails" class="thumbnail-container">
+            <ul class="thumbnail pt-3">
+              <% @drummer.youtube_videos.each do |video_id| %>
+                <li data-action="click->youtube#changeVideo" data-video-id="<%= video_id %>">
+                  <img src="https://img.youtube.com/vi/<%= video_id %>/0.jpg" alt="Thumbnail">
+                </li>
+              <% end %>
+            </ul>
+          </div>
         </div>
-        <div id="thumbnail-container" data-youtube-target="thumbnails" class="thumbnail-container">
-          <ul class="thumbnail">
-            <% @drummer.youtube_videos.each do |video_id| %>
-              <li data-action="click->youtube#changeVideo" data-video-id="<%= video_id %>">
-                <img src="https://img.youtube.com/vi/<%= video_id %>/0.jpg" alt="Thumbnail">
-              </li>
-            <% end %>
-          </ul>
-        </div>
+
         <% @drummer.artists.each do |artist| %>
           <% if artist.album_image.present? && artist.album_url.present? %>
             <div class="border-bottom border-5 pt-3 mb-3 w-60">
