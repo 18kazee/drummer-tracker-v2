@@ -1,27 +1,46 @@
 <section class="page-section bg-light" id="drummers">
   <div class="container">
-    <div class="team-member">
-      <% if @drummer.image_urls.present? %>
-        <%= image_tag @drummer.image_urls.first, class: 'rounded-circle' %>
-      <% else %>
-        <%= image_tag 'no-image.jpg', class: 'rounded-circle' %>
-      <% end %>
-      <h4><%= @drummer.name %></h4>
-      <% @drummer.artists.each do |artist| %>
-        <div class="badge bg-info mt-2">
-          <%= artist.name %>
+    <div class="row">
+      <div class="col-lg-3 text-center">
+        <div class="team-member">
+          <% if @drummer.image_urls.present? %>
+            <%= image_tag @drummer.image_urls.first, class: 'rounded-circle' %>
+          <% else %>
+            <%= image_tag 'no-image.jpg', class: 'rounded-circle' %>
+          <% end %>
         </div>
-      <% end %>
-      <div class="mt-2">
-        <% @drummer.genres.each do |genre| %>
-          <div class="badge bg-secondary">
-            <%= genre.name %>
+      </div>
+      <div class="col-lg-9 text-start">
+        <h4 class="pt-3"><%= @drummer.name %></h4>
+        <% @drummer.artists.each do |artist| %>
+          <div class="badge bg-info mt-2">
+            <%= artist.name %>
           </div>
         <% end %>
-      </div>
-      <p class="pt-3"><%= @drummer.profile %></p>
-      <div class="text-end">
-        <p><%= t('.wikipedia') %></p>
+        <div class="mt-2">
+          <% @drummer.genres.each do |genre| %>
+            <div class="badge bg-secondary">
+              <%= genre.name %>
+            </div>
+          <% end %>
+        </div>
+        <p class="pt-3"><%= @drummer.profile %></p>
+        <div class="text-end">
+          <p><%= t('.wikipedia') %></p>
+        </div>
+      <div data-controller="youtube" class="justify-content-center text-start pt-3">
+        <div id="video-container" class="">
+          <iframe id="video-iframe" src="https://www.youtube.com/embed/<%= @drummer.youtube_videos.first %>" frameborder="0" allowfullscreen width="500" height="300"></iframe>
+        </div>
+        <div id="thumbnail-container" data-youtube-target="thumbnails" class="thumbnail-container">
+          <ul class="thumbnail">
+            <% @drummer.youtube_videos.each do |video_id| %>
+              <li data-action="click->youtube#changeVideo" data-video-id="<%= video_id %>">
+                <img src="https://img.youtube.com/vi/<%= video_id %>/0.jpg" alt="Thumbnail">
+              </li>
+            <% end %>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
