@@ -7,7 +7,15 @@
         <%= image_tag 'no-image.jpg', class: 'rounded-circle' %>
       <% end %>
       <h4><%= @drummer.name %></h4>
+      <% @drummer.artists.each do |artist| %>
+        <div class="badge bg-info mt-3">
+          <%= artist.name %>
+        </div>
+      <% end %>
       <p class="pt-3"><%= @drummer.profile %></p>
+      <div class="text-end">
+        <p><%= t('.wikipedia') %></p>
+      </div>
     </div>
   </div>
 </section>

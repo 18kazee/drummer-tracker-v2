@@ -3,3 +3,5 @@ ja:
     index:
       title: Drummers 
       describe: ドラマー一覧
+    show:
+      wikipedia: 'ウィキペディア (Wikipedia): フリー百科事典'
