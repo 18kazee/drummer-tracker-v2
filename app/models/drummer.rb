@@ -8,4 +8,12 @@ class Drummer < ApplicationRecord
   has_many :artists, through: :drummer_artists
   has_many :drummer_genres, dependent: :destroy
   has_many :genres, through: :drummer_genres
+
+  def self.ransackable_attributes(auth_object = nil)
+    %w(country created_at discogs_id id image_urls name profile updated_at youtube_videos)
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    %w(artists drummer_artists drummer_genres genres)
+  end
 end
