@@ -1,0 +1,47 @@
+<div id="page-top">
+  <%= render 'tops/masthead' %>
+  <section class="page-section" id="services">
+    <div class="container">
+      <div class="text-center">
+        <h2 class="section-heading text-uppercase"><%= t('.service') %></h2>
+        <h3 class="section-subheading text-muted"><%= t('.service_describe') %></h3>
+      </div>
+      <div class="row text-center">
+        <div class="col-md-4">
+          <span class="fa-stack fa-4x">
+            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+            <i class="fas fa-search fa-stack-1x fa-inverse"></i>
+          </span>
+          <h4 class="my-3"><%= t('.search') %></h4>
+          <p class="text-muted"><%= t('.search_describe') %></p>
+        </div>
+        <div class="col-md-4">
+          <span class="fa-stack fa-4x">
+            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+            <i class="fas fa-heart fa-stack-1x fa-inverse"></i>
+          </span>
+          <h4 class="my-3"><%= t('.post') %></h4>
+          <p class="text-muted"><%= t('.search_describe') %></p>
+        </div>
+        <div class="col-md-4">
+          <span class="fa-stack fa-4x">
+            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+            <i class="fas fa-lock fa-stack-1x fa-inverse"></i>
+          </span>
+          <h4 class="my-3"><%= t('.diagnosis') %></h4>
+          <p class="text-muted"><%= t('.diagnosis_describe') %></p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- guest-login-->
+  <section class="page-section bg-light" id="guest-login">
+     <div class="container">
+       <div class="text-center">
+         <h2 class="section-heading text-uppercase"><%= t('defaults.guest_login') %></h2>
+         <h3 class="section-subheading text-muted"><%= t('.guest_login_describe') %></h3>
+         <%= link_to t('defaults.guest_login'), guest_login_path, class: "btn btn-primary btn-xl text-uppercase", data:{ turbo_method: :post } %>
+       </div>
+     </div>
+  </section>
+</div> 

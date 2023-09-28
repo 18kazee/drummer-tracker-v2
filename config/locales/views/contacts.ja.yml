@@ -1,0 +1,5 @@
+ja:
+  contacts:
+    new:
+      describe: 以下のフォームよりお問合せください
+      placeholder_message: お問合せ内容 *

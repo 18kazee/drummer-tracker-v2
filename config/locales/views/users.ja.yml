@@ -1,0 +1,25 @@
+ja:
+  users:
+    not_profile: 'プロフィールが登録されていません'
+    my_posts: '投稿'
+    created_at: '登録日：'
+    my_likes: 'いいね'
+    my_favorites: 'お気に入り'
+    new:
+      title: 会員登録
+      describe:  以下のフォームに入力して会員登録をしてください。入力後、認証メールが送られますので、確認をしてください。
+      placeholder_password: パスワード（5文字以上） *
+      placeholder_password_confirmation: パスワードをもう一度入力 *
+      send_activation: 確認メールを送信する
+      to_login_page: 'ログインページへ'
+      to_resend_activation: '登録メールが届きませんか？'
+    create:
+      success: '会登録用のメールを送信しました。メールをご確認ください。'
+      failed: '会員登録に失敗しました'
+    edit:
+      back: '戻る'
+    likes:
+    resend_activation_form:
+      title: '確認メールの再送信'
+      submit: '確認メールを送信'
+      back: '登録画面へ戻る'
