@@ -7,7 +7,7 @@ class DrummersController < ApplicationController
     @drummer = Drummer.find(params[:id])
   end
 
-    def search
+  def search
     @q = Drummer.ransack(params[:q])
     @drummers = @q.result(distinct: true).includes(:artists, :genres).order(:name).page(params[:page])
   end
