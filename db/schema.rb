@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_24_175143) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_28_044524) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "artists", force: :cascade do |t|
+    t.string "name"
+    t.string "spotify_name"
+    t.string "spotify_id"
+    t.string "album_image"
+    t.string "album_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "contacts", force: :cascade do |t|
     t.string "name"
@@ -20,6 +30,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_24_175143) do
     t.text "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "drummer_artists", force: :cascade do |t|
+    t.bigint "drummer_id", null: false
+    t.bigint "artist_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artist_id"], name: "index_drummer_artists_on_artist_id"
+    t.index ["drummer_id"], name: "index_drummer_artists_on_drummer_id"
   end
 
   create_table "drummers", force: :cascade do |t|
@@ -55,4 +74,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_24_175143) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token"
   end
 
+  add_foreign_key "drummer_artists", "artists"
+  add_foreign_key "drummer_artists", "drummers"
 end
