@@ -1,0 +1,13 @@
+<section class="page-section bg-light" id="drummers">
+  <div class="container">
+    <div class="team-member">
+      <% if @drummer.image_urls.present? %>
+        <%= image_tag @drummer.image_urls.first, class: 'rounded-circle' %>
+      <% else %>
+        <%= image_tag 'no-image.jpg', class: 'rounded-circle' %>
+      <% end %>
+      <h4><%= @drummer.name %></h4>
+      <p class="pt-3"><%= @drummer.profile %></p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,36 @@
+ja:
+  activerecord:
+    models:
+      user: 会員
+      drummer: ドラマー
+      post: 投稿
+      contact: お問合わせ
+    recommended_drummer: おすすめドラマー
+    attributes:
+      user:
+        name: 名前
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード（確認用）
+        created_at: 登録日時
+        updated_at: 更新日時
+        avatar: 写真
+        profile: プロフィール
+      drummer:
+        drummer_id: ドラマー
+      post:
+        tweet: 投稿内容
+        drummer: ドラマー
+      comment:
+        body: コメント
+      contact:
+        name: 名前
+        email: メールアドレス
+        message: お問い合わせ内容
+  enums:
+    user:
+      role:
+        general: '一般'
+        admin: '管理者'
+
+ 

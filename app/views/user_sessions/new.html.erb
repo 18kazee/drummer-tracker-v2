@@ -1,0 +1,41 @@
+<div class="page-top">  
+  <section class="page-section map-image" id="login">
+    <div class="container">
+      <div class="text-center">
+        <h2 class="section-heading text-white"><%= t('.title') %></h2>
+        <h3 class="section-subheading text-muted"><%= t('.describe') %></h3>
+      </div>
+
+      <%= form_with model: @user, local: true do |form| %>
+        <div class="row align-items-stretch mb-5">
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= form.email_field :email, class: 'form-control', placeholder: t('defaults.placeholder_email') %>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group form-group-textarea mb-md-0">
+              <%= form.password_field :password, class: 'form-control', placeholder: t('.password') %>
+            </div>
+          </div>
+        </div>
+
+        <!-- Submit Button-->
+        <div class="text-center">
+          <%= form.submit t('defaults.login'), class: 'btn btn-primary btn-xl text-uppercase', id: 'submitButton' %>
+        </div>
+      <% end %>
+      <div class="text-center mt-5">
+        <%= link_to t('.to_register_page'), new_user_path, class: 'btn btn-info btn-sm' %>
+      </div>
+      <div class="row mt-3">
+        <div class="col-md-6 text-end">
+          <%= link_to t('.to_guest_login'), '#', class: 'btn btn-outline-success btn-sm' %>
+        </div>
+        <div class="col-md-6">
+          <%= link_to t('.to_reset_password_page'), new_password_reset_path, class: 'btn btn-outline-light btn-sm' %>
+        </div>
+      </div>
+    </div>
+  </section>
+<div>

@@ -1,0 +1,16 @@
+ja:
+ user_sessions:
+    new:
+      title: ログイン
+      describe: 以下のフォームに入力してログインしてください。
+      password: パスワード *
+      to_register_page: 会員登録へ
+      to_reset_password_page: パスワードをお忘れの方はこちら
+      to_guest_login: ゲストログインはこちら
+    create:
+      success: ログインしました
+      failer: ログインできませんでした
+    destroy:
+      success: ログアウトしました
+    guest_login:
+      success: ゲストでログインしました

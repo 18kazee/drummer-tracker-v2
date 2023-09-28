@@ -1,0 +1,26 @@
+<div class="page-top">  
+  <section class="page-section map-image" id="reset_password">
+    <div class="container">
+      <div class="text-center">
+        <h2 class="section-heading text-white"><%= t('.title') %></h2>
+        <h3 class="section-subheading text-muted"><%= t('.describe') %></h3>
+      </div>
+
+      <%= form_with url: password_resets_path, local: true do |form| %>
+        <div class="text-center mb-5">
+            <div class="form-group">
+              <%= form.email_field :email, class: 'form-control', placeholder: t('defaults.placeholder_email') %>
+            </div>
+          </div>
+
+        <!-- Submit Button-->
+        <div class="text-center">
+          <%= form.submit t('.submit'), class: 'btn btn-primary btn-xl text-uppercase', id: 'submitButton' %>
+        </div>
+      <% end %>
+      <div class="text-center mt-5">
+        <%= link_to t('.to_login_page'), login_path, class: 'btn btn-info btn-sm' %>
+      </div>
+    </div>
+  </section>
+<div>

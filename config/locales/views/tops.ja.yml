@@ -1,0 +1,15 @@
+ja:
+  tops:
+    index:
+      title: Drummer Tracker
+      subtitle: ドラマー検索アプリ 
+      to_service: Drummer Trackerとは
+      service: サービス
+      service_describe: 使用方法はシンプル。検索するだけ
+      search: 検索
+      search_describe: あなたが気になるドラマーの名前やアーティスト名で検索をするだけ。ジャンルでも検索ができます。
+      post: 掲示板投稿
+      post_describe: お気に入りのドラマーを見つけたら、ドラマー情報をシェアしましょう。
+      diagnosis: おすすめ診断
+      diagnosis_describe: ログインして診断。お気に入りのドラマーが見つかるかも。
+      guest_login_describe: まずはお試し、ゲストログイン

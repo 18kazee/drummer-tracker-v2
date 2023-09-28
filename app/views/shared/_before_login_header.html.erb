@@ -1,0 +1,19 @@
+<div id="before-login">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+  <div class="container">
+    <%= link_to 'Drummer Tracker', root_path, class: 'navbar-brand' %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fas fa-bars ms-1"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+        <li class="nav-item"><%= nav_link_to 'サービス', root_path, anchor: 'services' %></li>
+        <li class="nav-item"><%= nav_link_to 'ゲストログイン', root_path, anchor: 'guest-login' %></li>
+        <li class="nav-item"><%= nav_link_to 'ログイン', login_path, anchor: 'login' %></li>
+        <li class="nav-item"><%= nav_link_to '会員登録', new_user_path, anchor: 'new_user' %></li>
+        <li class="nav-item"><%= nav_link_to 'お問合せ', new_contact_path, anchor: 'contact' %></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+</div>

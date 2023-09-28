@@ -1,0 +1,46 @@
+<div id="page-top">
+<section class="page-section map-image" id="contact">
+  <div class="container">
+    <div class="text-center">
+    <h2 class="section-heading text-uppercase"><%= t('activerecord.models.contact') %></h2>
+    <h3 class="section-subheading text-muted"><%= t('.describe') %></h3>
+    </div>
+
+    <%= form_with model: @contact, id: 'contactForm', local: true do |form| %>
+      <div class="row align-items-stretch mb-5">
+        <div class="col-md-6">
+          <div class="form-group">
+            <!-- Name input-->
+            <%= form.text_field :name, class: 'form-control', placeholder: t('defaults.placeholder_name') %>
+            <span class="error_message"><%= @contact.errors.full_messages_for(:name).join(", ") if @contact %></span>
+          </div>
+          <div class="form-group">
+            <!-- Email address input-->
+            <%= form.email_field :email, class: 'form-control', placeholder: t('defaults.placeholder_email') %>
+           <span class="error_message"><%= @contact.errors.full_messages_for(:email).join(", ") if @contact %></span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group form-group-textarea mb-md-0">
+            <!-- Message input-->
+            <%= form.text_area :message, class: 'form-control', placeholder: t('.placeholder_message') %>
+            <span class="error_message"><%= @contact.errors.full_messages_for(:message).join(", ") if @contact %></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Submit success message-->
+      <!-- You can use Rails flash messages or AJAX to handle this -->
+      <div class="d-none" id="submitSuccessMessage">
+        <div class="text-center text-white mb-3">
+        </div>
+      </div>
+
+      <!-- Submit Button-->
+      <div class="text-center">
+        <%= form.submit t('helpers.submit.send'), class: 'btn btn-primary btn-xl text-uppercase', id: 'submitButton' %>
+      </div>
+    <% end %>
+  </div>
+</section>
+</div>

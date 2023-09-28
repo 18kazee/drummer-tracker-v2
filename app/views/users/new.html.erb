@@ -1,0 +1,47 @@
+<div id="page-top">
+  <section class="page-section map-image" id="new_user">
+    <div class="container">
+      <div class="text-center">
+        <h2 class="section-heading text-white"><%= t('.title') %></h2>
+        <h3 class="section-subheading text-muted"><%= t('.describe') %></h3>
+      </div>
+
+      <%= form_with model: @user, local: true do |form| %>
+        <div class="row align-items-stretch mb-5">
+          <div class="col-md-6">
+            <div class="form-group">
+              <!-- Name input-->
+              <%= form.text_field :name, class: 'form-control', placeholder: t('defaults.placeholder_name') %>
+              <span class="error_message"><%= @user.errors.full_messages_for(:name).join(", ") if @user %></span>
+            </div>
+            <div class="form-group">
+              <!-- Email address input-->
+              <%= form.email_field :email, class: 'form-control', placeholder: t('defaults.placeholder_email') %>
+              <span class="error_message"><%= @user.errors.full_messages_for(:email).join(", ") if @user %></span>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group form-group-textarea mb-md-0">
+              <!-- password input-->
+              <%= form.password_field :password, class: 'form-control', placeholder: t('.placeholder_password') %>
+              <span class="error_message"><%= @user.errors.full_messages_for(:password).join(", ") if @user %></span>
+            </div>
+            <div class="form-group form-group-textarea mb-md-0">
+              <!-- password_confirmation input-->
+              <%= form.password_field :password_confirmation, class: 'form-control', placeholder: t('.placeholder_password_confirmation') %>
+              <span class="error_message"><%= @user.errors.full_messages_for(:password_confirmation).join(", ") if @user %></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Submit Button-->
+        <div class="text-center">
+          <%= form.submit t('.send_activation'), class: 'btn btn-primary btn-xl text-uppercase', id: 'submitButton' %>
+        </div>
+      <% end %>
+      <div class="text-center mt-5">
+        <%= link_to t('.to_login_page'), login_path, class: 'btn btn-info btn-sm' %>
+        <span class="ps-1"><%= link_to t('helpers.submit.back'), root_path, class: 'btn btn-outline-light btn-sm' %> </span>
+    </div>
+  </section>
+<div>
