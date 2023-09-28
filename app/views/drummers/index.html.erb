@@ -1,9 +1,4 @@
-<header class="masthead">
-  <div class="container">
-    <div class="masthead-subheading"><%= t('tops.index.subtitle') %></div>
-    <div class="masthead-heading text-uppercase"><%= t('tops.index.title') %></div>
-  </div>
-</header>
+<%= render 'tops/masthead' %>
 <section class="page-section bg-light" id="drummers">
   <div class="container">
     <div class="text-center">
@@ -15,7 +10,6 @@
     <% @drummers.each do |drummer| %>
       <div class="col-lg-4">
         <div class="team-member">
-
           <div class="mx-auto">
             <% if drummer.image_urls.present? %>
               <%= link_to drummer_path(drummer) do %>
@@ -27,7 +21,7 @@
               <% end %>
             <% end %>
           </div>
-          
+        
           <h4><%= drummer.name %></h4>
 
           <% drummer.artists.each do |artist| %>
@@ -35,7 +29,6 @@
               <%= artist.name %>
             </div>
           <% end %>
-
         </div>
       </div>
     <% end %>
