@@ -1,7 +1,7 @@
 ja:
   activerecord:
     models:
-      user: 会員
+      user: ユーザー 
       drummer: ドラマー
       post: 投稿
       contact: お問合わせ

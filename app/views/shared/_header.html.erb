@@ -17,7 +17,7 @@
               マイページ
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMypage">
-              <li class="dropdown-item"><%= link_to 'プロフィール', "#" %></li>
+              <li class="dropdown-item"><%= link_to 'プロフィール', user_path(current_user) %></li>
               <li class="dropdown-item"><%= link_to 'ログアウト', logout_path, data:{ turbo_method: :delete, turbo_confirm: t('defaults.message.logout_confirm') } %></li>
               <li class="dropdown-item"><%= link_to 'サービス', root_path, anchor: 'services' %></li>
               <li class="dropdown-item"><%= link_to 'お問合せ', new_contact_path, anchor: 'contact' %></li>
