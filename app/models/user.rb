@@ -4,11 +4,13 @@ class User < ApplicationRecord
   before_create :generate_activation_token, unless: :guest?
   authenticates_with_sorcery!
 
+  mount_uploader :avatar, AvatarUploader
+
   validates :name, presence: true, length: { maximum: 20 }
-  validates :email, presence: true, uniqueness: true
-  validates :password, presence: true
+  validates :email, presence: true, uniqueness: true, on: :create
+  validates :password, presence: true, on: :create
   validates :password, length: { minimum: 5 }, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
-  validates :password_confirmation, presence: true
+  validates :password_confirmation, presence: true, on: :create
   validates :profile, length: { maximum: 200 }, on: :update
 
   validates :reset_password_token, presence: true, uniqueness: true, allow_nil: true
