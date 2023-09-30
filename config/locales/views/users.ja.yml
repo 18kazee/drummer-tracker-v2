@@ -1,6 +1,5 @@
 ja:
   users:
-    not_profile: 'プロフィールが登録されていません'
     my_posts: '投稿'
     created_at: '登録日：'
     my_likes: 'いいね'
@@ -16,6 +15,9 @@ ja:
     create:
       success: '会登録用のメールを送信しました。メールをご確認ください。'
       failed: '会員登録に失敗しました'
+    show:
+      not_profile: プロフィールはまだ登録されていません
+      edit: 編集
     edit:
       back: '戻る'
     likes:
