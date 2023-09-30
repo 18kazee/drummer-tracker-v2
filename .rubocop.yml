@@ -1,0 +1,6 @@
+inherit_from: .rubocop_todo.yml
+# migrationファイルはメソッド行数が11行以上でも許可する
+MethodLength:
+  Exclude:
+    - 'db/migrate/*' # *でmigrate以下のファイルを全て指定する
+    - 'bin/bundle'

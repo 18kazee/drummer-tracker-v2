@@ -1,4 +1,4 @@
-<%= turbo_frame_tag 'drummers-list', data: { turbo_action: "advance" } do %>
+<%= turbo_frame_tag 'drummers-list', data: { turbo_action: :advance } do %>
   <div class="container">
     <% if params[:q].present? && @drummers.any? %>
       <div class="row pt-5">
@@ -31,11 +31,10 @@
       <div class="pt-5 justify-content-center d-flex">
         <%= paginate @drummers, theme: 'bootstrap-5' %>
       </div>
-      <% elsif params[:q].present? %>
-        <div class="text-center">
-          <p><%= t('defaults.message.no_result') %></p>
-        </div>
-      <% end %>
-    </div>
+    <% elsif params[:q].present? %>
+      <div class="text-center">
+        <p><%= t('defaults.message.no_result') %></p>
+      </div>
+    <% end %>
   </div>
 <% end %>

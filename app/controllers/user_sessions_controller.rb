@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UserSessionsController < ApplicationController
   skip_before_action :require_login, only: %i[new create guest_login]
 
@@ -10,7 +12,7 @@ class UserSessionsController < ApplicationController
       redirect_back_or_to root_path, notice: t('.success')
     else
       flash.now.alert = t('.failer')
-      render :new, status: :unprocessable_entity 
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -20,19 +22,24 @@ class UserSessionsController < ApplicationController
   end
 
   def guest_login
-    @guest_user = User.new(
-      name: 'ゲスト',
-      email: SecureRandom.alphanumeric(10) + '@example.com',
-      password: 'password',
-      password_confirmation: 'password',
-      guest: true
-    )
-    
+    create_guest_user
+
     return unless @guest_user.save
 
     cookies.encrypted[:user_id] = @guest_user.id
     auto_login(@guest_user)
     redirect_to root_path, notice: t('.success')
-  
+  end
+
+  private
+
+  def create_guest_user
+    @guest_user = User.new(
+      name: 'ゲスト',
+      email: "#{SecureRandom.alphanumeric(10)}@example.com",
+      password: 'password',
+      password_confirmation: 'password',
+      guest: true
+    )
   end
 end

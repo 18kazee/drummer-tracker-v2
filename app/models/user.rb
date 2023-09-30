@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   before_create :generate_activation_token, unless: :guest?
   authenticates_with_sorcery!
@@ -19,5 +21,15 @@ class User < ApplicationRecord
 
   def generate_activation_token
     self.activation_token = SecureRandom.hex(32)
+  end
+
+  def gest
+    @guest_user = User.new(
+      name: 'ゲスト',
+      email: "#{SecureRandom.alphanumeric(10)}@example.com",
+      password: 'password',
+      password_confirmation: 'password',
+      guest: true
+    )
   end
 end

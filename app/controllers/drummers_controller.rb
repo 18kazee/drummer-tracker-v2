@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class DrummersController < ApplicationController
   def index
-   @drummers = Drummer.includes(:artists, :genres).all.page(params[:page]).order('created_at asc')
+    @drummers = Drummer.includes(:artists, :genres).all.page(params[:page]).order('created_at asc')
   end
 
   def show

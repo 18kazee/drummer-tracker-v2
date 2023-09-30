@@ -1,6 +1,13 @@
-<%= turbo_frame_tag 'drummers-list' do %>
-  <section class="page-section bg-light" id="drummers">
-    <div class="container">
+<%= render 'tops/masthead' %>
+<section class="page-section bg-light" id="drummer">
+  <div class="container">
+    <div class="text-center">
+      <h2 class="section-heading text-uppercase"><%= t('.title') %></h2>
+      <h3 class="section-subheading text-muted"><%= t('.describe') %></h3>
+    </div>
+  </div>
+  <div class="container">
+    <%= turbo_frame_tag 'drummers-list' do %>
       <div class="row">
         <div class="col-lg-3 text-center">
           <div class="team-member">
@@ -57,6 +64,6 @@
           <% end %>
         </div>
       </div>
-    </div>
-  </section>
-<% end %>
+    <% end %>
+  </div>
+</section>

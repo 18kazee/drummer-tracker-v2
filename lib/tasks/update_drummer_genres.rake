@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # lib/tasks/update_drummer_genres.rake
 
 namespace :import do

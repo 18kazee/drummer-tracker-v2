@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class ContactsController < ApplicationController
-  skip_before_action :require_login, only: [:new, :create]
+  skip_before_action :require_login, only: %i[new create]
 
   def new
     @contact = Contact.new
@@ -9,9 +11,9 @@ class ContactsController < ApplicationController
     @contact = Contact.new(contact_params)
     if @contact.save
       ContactMailer.send_mail(@contact).deliver_now
-      redirect_to root_path, notice: "お問合せを受付ました。"
+      redirect_to root_path, notice: 'お問合せを受付ました。'
     else
-      flash.now.alert = "お問合せに失敗しました。"
+      flash.now.alert = 'お問合せに失敗しました。'
       render :new, status: :unprocessable_entity
     end
   end
