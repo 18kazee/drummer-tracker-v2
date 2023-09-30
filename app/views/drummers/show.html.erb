@@ -1,15 +1,17 @@
 <%= render 'tops/masthead' %>
-<section class="page-section bg-light" id="drummer">
-  <div class="container">
-    <div class="text-center">
-      <h2 class="section-heading text-uppercase"><%= t('.title') %></h2>
-      <h3 class="section-subheading text-muted"><%= t('.describe') %></h3>
+<%# modal用のturbo_farme_tag %>
+<%= turbo_frame_tag 'drummers-list' do %>
+
+  <section class="page-section bg-light" id="drummer">
+    <div class="container">
+      <div class="text-center">
+        <h2 class="section-heading text-uppercase"><%= t('.title') %></h2>
+        <h3 class="section-subheading text-muted"><%= t('.describe') %></h3>
+      </div>
     </div>
-  </div>
-  <div class="container">
-    <%= turbo_frame_tag 'drummers-list' do %>
+    <div class="container">
       <div class="row">
-        <div class="col-lg-3 text-center">
+        <div class="col-xl-3 text-center">
           <div class="team-member">
             <% if @drummer.image_urls.present? %>
               <%= image_tag @drummer.image_urls.first, class: 'rounded-circle' %>
@@ -18,7 +20,7 @@
             <% end %>
           </div>
         </div>
-        <div class="col-lg-9 text-start">
+        <div class="col-xl-9 text-start">
           <h4 class="pt-3"><%= @drummer.name %></h4>
           <% @drummer.artists.each do |artist| %>
             <div class="badge bg-info mt-2">
@@ -43,7 +45,7 @@
             <div id="thumbnail-container" data-youtube-target="thumbnails" class="thumbnail-container">
               <ul class="thumbnail pt-3">
                 <% @drummer.youtube_videos.each do |video_id| %>
-                  <li data-action="click->youtube#changeVideo" data-video-id="<%= video_id %>">
+                  <li data-action="click->youtube#changeVideo" data-video-id="<%= video_id %>" >
                     <img src="https://img.youtube.com/vi/<%= video_id %>/0.jpg" alt="Thumbnail">
                   </li>
                 <% end %>
@@ -64,6 +66,6 @@
           <% end %>
         </div>
       </div>
-    <% end %>
-  </div>
-</section>
+    </div>
+  </section>
+<% end %>

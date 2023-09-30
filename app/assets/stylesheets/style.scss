@@ -11297,25 +11297,34 @@ header.masthead .masthead-heading {
 }
 
 .thumbnail-container {
-  display: flex;
-  justify-content: flex-start;
   align-items: center;
 }
 
 .thumbnail {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 10px; 
 }
+
+ul.thumbnail {
+padding-left: 0 !important;
+}
+
 
 .thumbnail li {
   list-style-type: none;
 }
 
 .thumbnail li img {
-  width: 90px;
-  padding-left: 2px;
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 600px) {
+  .thumbnail li {
+    flex: 1 1 calc(50% - 10px); /* 2 thumbnails per row on small screens */
+    max-width: calc(50% - 10px);
+  }
 }
 
 .img-brand {
