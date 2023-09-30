@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   delete 'logout', to: 'user_sessions#destroy'
   post 'guest_login', to: 'user_sessions#guest_login'
 
+  get '/drummers/:id/modal', to: 'drummers#modal', as: 'modal'
+
   root 'tops#index'
 
   resources :drummers, only: %i[index show] do
