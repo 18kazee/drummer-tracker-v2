@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'csv'
 
 namespace :import_artist do
   desc 'Import artists from CSV'
   task artists: :environment do
-    csv_file_path = 'db/csv/artists.csv'  # CSVファイルのパスを指定してください
+    csv_file_path = 'db/csv/artists.csv' # CSVファイルのパスを指定してください
 
     CSV.foreach(csv_file_path, headers: true) do |row|
       artist = Artist.find_by(name: row['name'])

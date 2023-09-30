@@ -1,7 +1,13 @@
 <header class="masthead">
   <div class="container">
-    <div class="masthead-subheading"><%= t('tops.index.subtitle') %></div>
-    <div class="masthead-heading text-uppercase"><%= t('tops.index.title') %></div>
-    <%= link_to t('tops.index.to_service'),root_path(anchor: 'services'), class: 'btn btn-primary btn-xl' %>
+    <div class="masthead-subheading">
+      <%= t('tops.index.subtitle') %>
+    </div>
+    <div class="masthead-heading text-uppercase">
+      <%= t('tops.index.title') %>
+    </div>
+    <% unless logged_in? %>
+      <%= link_to t('tops.index.to_service'),root_path(anchor: 'services'), class: 'btn btn-primary btn-xl' %>
+    <% end %>
   </div>
 </header>

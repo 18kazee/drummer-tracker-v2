@@ -1,9 +1,4 @@
-<header class="masthead">
-  <div class="container">
-    <div class="masthead-subheading"><%= t('tops.index.subtitle') %></div>
-    <div class="masthead-heading text-uppercase"><%= t('tops.index.title') %></div>
-  </div>
-</header>
+<%= render 'tops/masthead' %>
 <section class="page-section bg-light" id="drummers">
   <div class="container">
     <div class="text-center">
@@ -17,20 +12,27 @@
         <div class="team-member">
           <div class="mx-auto">
             <% if drummer.image_urls.present? %>
-              <%= link_to drummer_path(drummer) do %>
+              <%= link_to "#{drummer_path(drummer)}#drummer" do %>
                 <%= image_tag drummer.image_urls.first, class: 'rounded-circle' %>
               <% end %>
             <% else %>
-              <%= link_to drummer_path(drummer) do %>
+              <%= link_to "#{drummer_path(drummer)}#drummer" do %>
                 <%= image_tag 'no-image.jpg', class: 'rounded-circle' %>
               <% end %>
             <% end %>
           </div>
+        
           <h4><%= drummer.name %></h4>
+
+          <% drummer.artists.each do |artist| %>
+            <div class="badge bg-secondary">
+              <%= artist.name %>
+            </div>
+          <% end %>
         </div>
       </div>
     <% end %>
-    <div class="pt-5 justify-content-center d-flex">
+    <div class="justify-content-center d-flex">
       <%= paginate @drummers, theme: 'bootstrap-5' %>
     </div>
   </div>
