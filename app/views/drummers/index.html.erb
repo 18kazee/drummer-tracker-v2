@@ -7,33 +7,11 @@
     </div>
   </div>
   <div class="row">
-    <% @drummers.each do |drummer| %>
-      <div class="col-lg-4">
-        <div class="team-member">
-          <div class="mx-auto">
-            <% if drummer.image_urls.present? %>
-              <%= link_to "#{drummer_path(drummer)}#drummer" do %>
-                <%= image_tag drummer.image_urls.first, class: 'rounded-circle' %>
-              <% end %>
-            <% else %>
-              <%= link_to "#{drummer_path(drummer)}#drummer" do %>
-                <%= image_tag 'no-image.jpg', class: 'rounded-circle' %>
-              <% end %>
-            <% end %>
-          </div>
-        
-          <h4><%= drummer.name %></h4>
-
-          <% drummer.artists.each do |artist| %>
-            <div class="badge bg-secondary">
-              <%= artist.name %>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    <% end %>
+    <%= render @drummers %>
     <div class="justify-content-center d-flex">
       <%= paginate @drummers, theme: 'bootstrap-5' %>
     </div>
   </div>
 </section>
+
+<%= turbo_frame_tag 'drummers-list' %>

@@ -22,14 +22,4 @@ class User < ApplicationRecord
   def generate_activation_token
     self.activation_token = SecureRandom.hex(32)
   end
-
-  def gest
-    @guest_user = User.new(
-      name: 'ゲスト',
-      email: "#{SecureRandom.alphanumeric(10)}@example.com",
-      password: 'password',
-      password_confirmation: 'password',
-      guest: true
-    )
-  end
 end
