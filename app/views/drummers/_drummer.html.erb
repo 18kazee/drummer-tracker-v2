@@ -1,0 +1,23 @@
+<div class="col-lg-4">
+  <div class="team-member">
+    <div class="mx-auto">
+      <% if drummer.image_urls.present? %>
+        <%= link_to modal_path(drummer), data: { turbo_frame: 'modal' } do %>
+          <%= image_tag drummer.image_urls.first, class: 'rounded-circle' %>
+        <% end %>
+      <% else %>
+        <%= link_to modal_path(drummer), data:{ turbo_frame: 'modal' } do %>
+          <%= image_tag 'no-image.jpg', class: 'rounded-circle' %>
+        <% end %>
+      <% end %>
+    </div>
+  
+    <h4><%= drummer.name %></h4>
+
+    <% drummer.artists.each do |artist| %>
+      <div class="badge bg-secondary">
+        <%= artist.name %>
+      </div>
+    <% end %>
+  </div>
+</div>
