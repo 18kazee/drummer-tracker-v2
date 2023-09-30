@@ -13,4 +13,8 @@ class DrummersController < ApplicationController
     @q = Drummer.ransack(params[:q])
     @drummers = @q.result(distinct: true).includes(:artists, :genres).order(:name).page(params[:page])
   end
+
+  def modal
+    @drummer = Drummer.find(params[:id])
+  end
 end

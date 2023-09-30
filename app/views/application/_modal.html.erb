@@ -1,0 +1,17 @@
+<%= turbo_frame_tag 'modal' do %>
+  <div class="modal fade" data-controller="modal" data-spinner-target="spinner">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <%= button_tag "", type: "button", class: "btn-close", data: { bs_dismiss: :modal }, aria: {label: :Close} %>
+        </div>
+        <div class="modal-body">
+          <%= yield %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-light" data-bs-dismiss="modal" aria-label="Close"><%= t('defaults.close') %></button>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
