@@ -1,5 +1,6 @@
-class PasswordResetsController < ApplicationController
+# frozen_string_literal: true
 
+class PasswordResetsController < ApplicationController
   skip_before_action :require_login, only: %i[create edit new update]
   before_action :set_token, only: %i[edit update]
   before_action :set_user, only: %i[edit update]
@@ -37,4 +38,3 @@ class PasswordResetsController < ApplicationController
     @user = User.load_from_reset_password_token(params[:id])
   end
 end
-

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
@@ -8,7 +10,7 @@
 
 require 'csv'
 
-csv_path = Rails.root.join("db/csv/drummers.csv")
+csv_path = Rails.root.join('db/csv/drummers.csv')
 
 CSV.foreach(csv_path, headers: true) do |row|
   Rails.logger.debug "Name: #{row['name']}, Country: #{row['country']}, Profile: #{row['profile']}"

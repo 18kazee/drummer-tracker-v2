@@ -12,11 +12,11 @@
         <div class="team-member">
           <div class="mx-auto">
             <% if drummer.image_urls.present? %>
-              <%= link_to drummer_path(drummer) do %>
+              <%= link_to "#{drummer_path(drummer)}#drummer" do %>
                 <%= image_tag drummer.image_urls.first, class: 'rounded-circle' %>
               <% end %>
             <% else %>
-              <%= link_to drummer_path(drummer) do %>
+              <%= link_to "#{drummer_path(drummer)}#drummer" do %>
                 <%= image_tag 'no-image.jpg', class: 'rounded-circle' %>
               <% end %>
             <% end %>

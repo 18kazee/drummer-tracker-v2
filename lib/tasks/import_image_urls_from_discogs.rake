@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 require 'discogs-wrapper' # Discogs APIのラッパーライブラリを適切にインポート
 
 namespace :import do
-  desc "Import image URLs from Discogs"
+  desc 'Import image URLs from Discogs'
   task image_urls: :environment do
     Drummer.all.each_slice(25) do |batch|
       batch.each do |drummer|
-        auth_wrapper = Discogs::Wrapper.new("My awesome web app", user_token: ENV["DISCOGS_USER_TOKEN"])
+        auth_wrapper = Discogs::Wrapper.new('My awesome web app', user_token: ENV['DISCOGS_USER_TOKEN'])
         if drummer.discogs_id
           artist = auth_wrapper.get_artist(drummer.discogs_id) # drummer.discogs_id は文字列のまま渡す
           image_urls = []
