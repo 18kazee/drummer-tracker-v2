@@ -20,6 +20,7 @@ Rails.application.routes.draw do
       get :activate
     end
   end
+  resources :posts
   resources :contacts, only: %i[new create]
   resources :password_resets, only: %i[new create edit update]
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
