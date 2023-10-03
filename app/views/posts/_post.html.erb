@@ -1,0 +1,47 @@
+<div class="card post" id="post-<%= post.id %>" data-href="<%= post_path(post) %>">
+  <div class="card-body">
+    <div class="row">
+
+      <%# 投稿者のアバター %>
+      <div class="col-2">
+        <%= link_to user_path(post.user), class: 'post_user link' do %>
+          <%= image_tag post.user.avatar.url, class: 'rounded-circle', id: "post-user-#{post.user_id}" %>
+        <% end %>
+      </div>
+
+      <%# 投稿内容 %>
+      <div class="col-10">
+        <div class="card-text">
+          <div class="d-flex align-items-center">
+             <h6 class="mb-0 link"><%= post.user.name %></h6>
+             <span class="ms-4 text-muted"><%= l post.created_at, format: :long %></span>
+           </div>
+          <p><%= post.tweet %></p>
+
+          <%# 投稿のドラマー内容 %>
+          <div class="team-member mb-3 text-start">
+            <div class="mx-auto">
+              <% if post.drummer.image_urls.present? %>
+                <%= link_to modal_path(post.drummer), data: { turbo_frame: 'modal' } do %>
+                  <%= image_tag post.drummer.image_urls.first, class: 'rounded-circle link', id: "post-drummer-#{post.drummer_id}" %>
+                <% end %>
+              <% else %>
+                <%= link_to modal_path(post.drummer), data:{ turbo_frame: 'modal' } do %>
+                  <%= image_tag 'no-image.jpg', class: 'rounded-circle link', id: "post-drummer-#{post.drummer_id}" %>
+                <% end %>
+              <% end %>
+            </div>
+            <h4><%= post.drummer.name %></h4>
+            <% post.drummer.artists.each do |artist| %>
+              <div class="badge bg-secondary">
+                <%= artist.name %>
+              </div>
+            <% end %>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
