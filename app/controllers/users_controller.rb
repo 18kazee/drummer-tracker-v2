@@ -3,6 +3,7 @@
 class UsersController < ApplicationController
   skip_before_action :require_login, only: %i[new create activate]
   before_action :correct_user, only: %i[edit update]
+  before_action :set_current_user, only: %i[edit update]
 
   def new
     @user = User.new
@@ -22,9 +23,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit
-    @user = current_user
-  end
+  def edit; end
 
   def update
     if current_user.update(update_user_params)
@@ -62,5 +61,9 @@ class UsersController < ApplicationController
   def correct_user
     @user = User.find(params[:id])
     redirect_to root_path, alert: t('defaults.message.not_authorized') unless @user == current_user
+  end
+
+  def set_current_user
+    @user = current_user
   end
 end
