@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   post 'guest_login', to: 'user_sessions#guest_login'
 
   get '/drummers/:id/modal', to: 'drummers#modal', as: 'modal'
+  get '/drummers/autocomplete', to: 'drummers#autocomplete'
 
   root 'tops#index'
 

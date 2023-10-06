@@ -17,4 +17,10 @@ class DrummersController < ApplicationController
   def modal
     @drummer = Drummer.find(params[:id])
   end
+
+  def autocomplete
+    query = params[:q]
+    @drummers = Drummer.where('name ILIKE ?', "%#{query}%")
+    render partial: 'drummers/autocomplete_results', locals: { drummers: @drummers }
+  end
 end
