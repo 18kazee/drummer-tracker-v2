@@ -94,9 +94,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_01_002213) do
     t.string "activation_token"
     t.datetime "activation_token_expires_at"
     t.boolean "guest", default: false
-    t.index ["activation_token"], name: "index_users_on_activation_token"
+    t.index ["activation_token"], name: "index_users_on_activation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token"
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "drummer_artists", "artists"
