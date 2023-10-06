@@ -1,2 +1,3 @@
-<%= turbo_stream.replace 'user-edit', partial: 'users/user' %>
+<%= turbo_stream.replace 'user-edit', partial: 'users/user', locals: { user: @user } %>
 <%= turbo_stream.update 'flashes', partial: 'flash' %>
+<%= turbo_stream.update 'user-avatar', partial: 'users/user_avatar', locals: { user: @user } %>

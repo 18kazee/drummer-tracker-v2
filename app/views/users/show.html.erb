@@ -2,10 +2,8 @@
 <section class="page-section bg-light" id="user-show-page">
   <div class="container">
     <div class="row">
-      <div class="col-xl-3 text-center">
-        <div class="team-member">
-          <%= image_tag @user.avatar.url, class: 'rounded-circle' %>
-        </div>
+      <div class="col-xl-3 text-center" id="user-avatar">
+        <%= render partial: 'user_avatar', locals: {user: @user} %>
       </div>
 
       <div class="col-xl-6 text-start">

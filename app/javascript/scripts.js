@@ -7,7 +7,7 @@
 // Scripts
 // 
 
-window.addEventListener('turbo:load', event => {
+window.addEventListener('DOMContentLoaded', event => {
 
     // Navbar shrink function
     var navbarShrink = function () {
@@ -49,8 +49,7 @@ window.addEventListener('turbo:load', event => {
                 navbarToggler.click();
             }
         });
-    });
-    
+    });    
     
     const observer = new MutationObserver(mutations => {
         mutations.forEach(mutation => {
