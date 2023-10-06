@@ -1,11 +1,12 @@
 ja:
   activerecord:
     models:
-      user: 会員
+      user: ユーザー 
       drummer: ドラマー
-      post: 投稿
+      post: みんなのおすすめ投稿
+      question: おすすめドラマー診断
       contact: お問合わせ
-    recommended_drummer: おすすめドラマー
+      recommended_drummer: おすすめドラマー
     attributes:
       user:
         name: 名前
@@ -17,12 +18,15 @@ ja:
         avatar: 写真
         profile: プロフィール
       drummer:
-        drummer_id: ドラマー
+        drummer: ドラマー
+        search: ドラマーを探す
       post:
         tweet: 投稿内容
         drummer: ドラマー
       comment:
         body: コメント
+      question:
+        name: 質問
       contact:
         name: 名前
         email: メールアドレス

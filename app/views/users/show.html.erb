@@ -1,0 +1,23 @@
+<div style="background-color: gray; height: 90px; width: 100%;"></div>
+<section class="page-section bg-light" id="user-show-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-3 text-center">
+        <div class="team-member">
+          <%= image_tag @user.avatar.url, class: 'rounded-circle' %>
+        </div>
+      </div>
+
+      <div class="col-xl-6 text-start">
+        <%= render 'user' %>
+      </div>
+
+      <div class="col-xl-3 pt-2">
+        <% if @user == current_user %>
+          <%= link_to t('.edit'), edit_user_path(@user), class: 'btn btn-primary', data: {turbo_frame: 'user-edit'} %>
+        <% end %>
+        <%= link_to t('.back'), posts_path, class: 'btn btn-outline-secondary' %>
+      </div>
+    </div>
+  </div>
+</section>

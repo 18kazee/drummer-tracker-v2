@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   delete 'logout', to: 'user_sessions#destroy'
   post 'guest_login', to: 'user_sessions#guest_login'
 
+  get '/drummers/:id/modal', to: 'drummers#modal', as: 'modal'
+  get '/drummers/autocomplete', to: 'drummers#autocomplete'
+
   root 'tops#index'
 
   resources :drummers, only: %i[index show] do
@@ -18,6 +21,7 @@ Rails.application.routes.draw do
       get :activate
     end
   end
+  resources :posts
   resources :contacts, only: %i[new create]
   resources :password_resets, only: %i[new create edit update]
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?

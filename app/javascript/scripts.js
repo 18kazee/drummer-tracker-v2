@@ -7,7 +7,7 @@
 // Scripts
 // 
 
-window.addEventListener('DOMContentLoaded', event => {
+window.addEventListener('turbo:load', event => {
 
     // Navbar shrink function
     var navbarShrink = function () {
@@ -50,5 +50,74 @@ window.addEventListener('DOMContentLoaded', event => {
             }
         });
     });
+    
+    
+    const observer = new MutationObserver(mutations => {
+        mutations.forEach(mutation => {
+            if (mutation.addedNodes.length) {
+                applyEffects();
+            }
+        });
+    });
+    const config = { childList: true, subtree: true };
+    observer.observe(document.body, config);
 
+
+    
+    
+    function applyEffects() {
+        const isPostsPage = window.location.pathname.includes('/posts/');
+
+        const applyPostEffects = (post) => {
+            post.addEventListener('mouseover', () => {
+                post.style.cursor = 'pointer';
+                post.classList.add('bg-light');
+            });
+
+            post.addEventListener('mouseout', () => {
+                post.style.cursor = 'default';
+                post.classList.remove('bg-light');
+            });
+        };
+
+        const applyUserEffects = (user) => {
+            user.addEventListener('mouseover', () => {
+                user.style.cursor = 'pointer';
+                user.style.opacity = '0.5';
+            });
+
+            user.addEventListener('mouseout', () => {
+                user.style.cursor = 'default';
+                user.style.opacity = '1';
+            });
+        };
+
+        const applyDrumerEffects = (drummer) => {
+            drummer.addEventListener('mouseover', () => {
+                drummer.style.cursor = 'pointer';
+                drummer.style.opacity = '0.5';
+            });
+            drummer.addEventListener('mouseout', () => {
+                drummer.style.cursor = 'default';
+                drummer.style.opacity = '1';
+            });
+        };
+
+        if (!isPostsPage) {
+            document.querySelectorAll('[id^="post-"]').forEach(applyPostEffects);
+
+            document.querySelectorAll('.clickable-card').forEach(function(card) {
+                card.addEventListener('click', function(e) {
+                    if (!e.target.closest('.link')) {
+                        window.location.href = card.dataset.href;
+                    }
+                });
+            });
+        }
+        
+        document.querySelectorAll('[id^="post-user-"]').forEach(applyUserEffects);
+        document.querySelectorAll('[id^="post-drummer-"]').forEach(applyDrumerEffects);
+    }
+
+    applyEffects();
 });

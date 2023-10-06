@@ -13,4 +13,14 @@ class DrummersController < ApplicationController
     @q = Drummer.ransack(params[:q])
     @drummers = @q.result(distinct: true).includes(:artists, :genres).order(:name).page(params[:page])
   end
+
+  def modal
+    @drummer = Drummer.find(params[:id])
+  end
+
+  def autocomplete
+    query = params[:q]
+    @drummers = Drummer.where('name ILIKE ?', "%#{query}%")
+    render partial: 'drummers/autocomplete_results', locals: { drummers: @drummers }
+  end
 end

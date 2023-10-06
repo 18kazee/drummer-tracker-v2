@@ -53,10 +53,14 @@ gem 'bootsnap', require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
+gem 'aws-sdk-s3'
 gem 'bootstrap5-kaminari-views'
+gem 'carrierwave'
 gem 'discogs-wrapper', '~> 2.4'
+gem 'fog-aws'
 gem 'google-api-client'
 gem 'kaminari'
+gem 'mini_magick'
 gem 'rails-i18n'
 gem 'ransack'
 gem 'rspotify'

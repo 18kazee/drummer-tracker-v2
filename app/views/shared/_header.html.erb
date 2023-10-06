@@ -7,20 +7,19 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-          <li class="nav-item"><%= nav_link_to 'ドラマーを探す', search_drummers_path, anchor: 'search' %></li>
-          <li class="nav-item"><%= nav_link_to 'ドラマー一覧', drummers_path, anchor: 'drummers' %></li>
-          <li class="nav-item"><%= nav_link_to 'みんなのおすすめ投稿', '#', anchor: 'post' %></li>
-          <li class="nav-item"><%= nav_link_to 'おすすめ診断', '#', anchor: 'diagnosis' %></li>
+          <li class="nav-item"><%= nav_link_to Drummer.human_attribute_name(:search), search_drummers_path, anchor: 'search' %></li>
+          <li class="nav-item"><%= nav_link_to Drummer.model_name.human, drummers_path, anchor: 'drummers' %></li>
+          <li class="nav-item"><%= nav_link_to Post.model_name.human, posts_path, anchor: 'posts' %></li>
+          <li class="nav-item"><%= nav_link_to 'おすすめ診断', '#' %></li>
 
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMypage" data-bs-toggle="dropdown" aria-expanded="false">
-              マイページ
-            </a>
+
+            <%= link_to t('defaults.mypage'), "#", class: "nav-link dropdown-toggle", id: "navbarDropdownMypage", data: { bs_toggle: "dropdown" }, aria: { expanded: "false" } %>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMypage">
-              <li class="dropdown-item"><%= link_to 'プロフィール', "#" %></li>
-              <li class="dropdown-item"><%= link_to 'ログアウト', logout_path, data:{ turbo_method: :delete, turbo_confirm: t('defaults.message.logout_confirm') } %></li>
-              <li class="dropdown-item"><%= link_to 'サービス', root_path, anchor: 'services' %></li>
-              <li class="dropdown-item"><%= link_to 'お問合せ', new_contact_path, anchor: 'contact' %></li>
+              <li class="dropdown-item"><%= link_to User.human_attribute_name(:profile), user_path(current_user) %></li>
+              <li class="dropdown-item"><%= link_to t('defaults.logout'), logout_path, data:{ turbo_method: :delete, turbo_confirm: t('defaults.message.logout_confirm') } %></li>
+              <li class="dropdown-item"><%= link_to t('defaults.service'), root_path, anchor: 'services' %></li>
+              <li class="dropdown-item"><%= link_to Contact.model_name.human, new_contact_path, anchor: 'contact' %></li>
             </ul>
           </li>
         </ul>

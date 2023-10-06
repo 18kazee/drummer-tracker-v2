@@ -11099,7 +11099,23 @@ header.masthead .masthead-heading {
 .portfolio-modal .close-modal:hover {
   opacity: 0.3;
 }
-
+.post_user {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+.post_user img {
+  width: 3rem;
+  height: 3rem;
+  border: 0.2rem solid rgba(0, 0, 0, 0.1);
+  object-fit: contain;
+}
+.post_user h6, .post_user .h6 {
+  margin-top: 1.5rem;
+  margin-bottom: 0;
+}
+.post p{
+  margin-bottom: 0.5rem !important;
+}
 .timeline {
   position: relative;
   padding: 0;
@@ -11297,25 +11313,34 @@ header.masthead .masthead-heading {
 }
 
 .thumbnail-container {
-  display: flex;
-  justify-content: flex-start;
   align-items: center;
 }
 
 .thumbnail {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 10px; 
 }
+
+ul.thumbnail {
+padding-left: 0 !important;
+}
+
 
 .thumbnail li {
   list-style-type: none;
 }
 
 .thumbnail li img {
-  width: 90px;
-  padding-left: 2px;
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 600px) {
+  .thumbnail li {
+    flex: 1 1 calc(50% - 10px); /* 2 thumbnails per row on small screens */
+    max-width: calc(50% - 10px);
+  }
 }
 
 .img-brand {
