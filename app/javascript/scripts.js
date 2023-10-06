@@ -15,9 +15,7 @@ window.addEventListener('turbo:load', event => {
         if (!navbarCollapsible) {
             return;
         }
-        if (window.location.pathname.includes('/posts')) {
-            navbarCollapsible.classList.add('navbar-shrink');
-        } else if (window.scrollY === 0) {
+        if (window.scrollY === 0) {
             navbarCollapsible.classList.remove('navbar-shrink')
         } else {
             navbarCollapsible.classList.add('navbar-shrink')
