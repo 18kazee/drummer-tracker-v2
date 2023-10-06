@@ -1,0 +1,31 @@
+<section class="page-section" id="posts">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-3">
+      </div>
+
+      <div class="col-xl-6">
+        <div class="text-center">
+          <h1 class="section-heading text-uppercas"><%= t('.title') %></h1>
+          <h3 class="section-subheading text-muted"><%= t('.subtitle') %></h3>
+        </div>
+
+        <div class="error_message" id='error-messages' data-reset-form-target="errorMessage"></div>
+          <%= render 'form' %>
+          <% if @posts.present? %>
+            <div id="post">
+              <%= render @posts %>
+            </div>
+            <div class="row">
+              <div class="justify-content-center d-flex pt-5">
+                <%= paginate @posts, theme: 'bootstrap-5' %>
+              </div>
+            </div>
+          <% else %>
+            <h5>No posts yet</h5>
+          <% end %>
+      </div>
+    </div>
+  </div>
+</section>
+

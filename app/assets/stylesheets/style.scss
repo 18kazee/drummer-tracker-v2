@@ -11099,6 +11099,23 @@ header.masthead .masthead-heading {
 .portfolio-modal .close-modal:hover {
   opacity: 0.3;
 }
+.post_user {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+.post_user img {
+  width: 3rem;
+  height: 3rem;
+  border: 0.2rem solid rgba(0, 0, 0, 0.1);
+  object-fit: contain;
+}
+.post_user h6, .post_user .h6 {
+  margin-top: 1.5rem;
+  margin-bottom: 0;
+}
+.post p{
+  margin-bottom: 0.5rem !important;
+}
 .timeline {
   position: relative;
   padding: 0;
