@@ -1,4 +1,3 @@
-<%= render 'tops/masthead' %>
 <section class="page-section" id="posts">
   <div class="container">
     <div class="row">
@@ -6,14 +5,25 @@
       </div>
 
       <div class="col-xl-6">
-        <% if @posts.present? %>
-          <div class="text-center">
-            <h1 class="mb-5"><%= t('.title') %></h1>
-          </div>
-          <%= render @posts %>
-        <% else %>
-          <h5>No posts yet</h5>
-        <% end %>
+        <div class="text-center">
+          <h1 class="mb-5"><%= t('.title') %></h1>
+          <h3 class="mb-5"><%= t('.subtitle') %></h3>
+        </div>
+
+        <div class="error_message pt-3" id='error-messages' data-reset-form-target="errorMessage"></div>
+          <%= render 'form' %>
+          <% if @posts.present? %>
+            <div id="post">
+              <%= render @posts %>
+            </div>
+            <div class="row">
+              <div class="justify-content-center d-flex pt-5">
+                <%= paginate @posts, theme: 'bootstrap-5' %>
+              </div>
+            </div>
+          <% else %>
+            <h5>No posts yet</h5>
+          <% end %>
       </div>
     </div>
   </div>
