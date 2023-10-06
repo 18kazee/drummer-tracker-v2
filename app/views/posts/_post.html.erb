@@ -1,4 +1,5 @@
-<div class="card post" id="post-<%= post.id %>" data-href="<%= post_path(post) %>">
+<% if post.id %>
+  <div class="card clickable-card" id="post-<%= post.id %>" data-href="<%= post_path(post) %>">
   <div class="card-body">
     <div class="row">
 
@@ -44,4 +45,4 @@
     </div>
   </div>
 </div>
-
+<% end %>
