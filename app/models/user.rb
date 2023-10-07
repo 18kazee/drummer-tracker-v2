@@ -15,6 +15,9 @@ class User < ApplicationRecord
 
   validates :reset_password_token, presence: true, uniqueness: true, allow_nil: true
 
+  has_many :posts, dependent: :destroy
+  has_many :comments, dependent: :destroy
+
   def send_activation_needed_email
     return if guest? # ゲストユーザーでない場合かつ未保存の場合にメールを送信
 
