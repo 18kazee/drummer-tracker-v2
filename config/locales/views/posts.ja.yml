@@ -3,3 +3,6 @@ ja:
     index:
       title: posts 
       subtitle: みんなのおすすめ投稿
+    show:
+      comments: コメント一覧
+      not_comments: コメントはまだありません

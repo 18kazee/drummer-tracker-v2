@@ -8,7 +8,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @post.user_id = current_user.id # ログインしているユーザーのidを代入
+    @post.user_id = current_user.id
     if @post.save
       post_saved
     else
@@ -18,6 +18,8 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @comments = @post.comments.includes(:user).order('created_at DESC')
+    @comment = Comment.new
   end
 
   private
