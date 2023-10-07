@@ -1,3 +1,4 @@
+<%= render "tops/masthead" %>
 <section class="page-section" id="post">
   <div class="container">
     <div class="row">
@@ -5,11 +6,26 @@
       </div>
 
       <div class="col-xl-6">
-        <%= link_to t('.back'), "#{posts_path}#posts", class: 'btn btn-primary' %>
+        <%= link_to t('helpers.submit.back'), "#{posts_path}#posts", class: 'btn btn-outline-secondary' %>
+        <%# 投稿 %>
         <div class="pt-3">
-          <%= render 'post', post: @post %>
+          <%= render 'posts/post', post: @post %>
         </div>
-
+        
+        <%# コメント %>
+        <div class="pt-3">
+          <%= render 'comments/form', post: @post, comment: @comment %>
+        </div>
+        
+        <%# コメント一覧 %>
+        <div class="pt-3">
+          <% if @comments.present? %>
+            <h3 class="text-center"><%= t('.comments') %></h3>
+            <%= render @comments %>
+          <% else %>
+            <p class="text-center"><%= t('.not_comments') %></p>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
