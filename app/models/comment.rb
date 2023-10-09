@@ -6,5 +6,5 @@ class Comment < ApplicationRecord
 
   validates :body, presence: true, length: { maximum: 655 }
 
-  broadcasts_to ->(_comment) { 'comments' }, inserts_by: :prepend
+  broadcasts_to ->(_comment) { 'comments' }, inserts_by: :append
 end

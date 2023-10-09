@@ -13,10 +13,6 @@
           <%= render 'posts/post', post: @post %>
         </div>
         
-        <%# コメント %>
-        <div class="pt-3">
-          <%= render 'comments/form', post: @post, comment: @comment %>
-        </div>
         
         <%# コメント一覧 %>
         <div class="pt-3">
@@ -31,6 +27,11 @@
               <%= render @comments %>
             </div>
           <% end %>
+        </div>
+
+        <%# コメント %>
+        <div class="pt-3">
+          <%= render 'comments/form', post: @post, comment: @comment %>
         </div>
       </div>
     </div>
