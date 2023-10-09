@@ -1,0 +1,13 @@
+<div data-controller="comment-form">
+<%= form_with model: @comment, url: post_comments_path(@post) do |form| %>
+  <div class="form-group">
+    <%= form.text_field :body, class: 'form-control',
+                               placeholder: t("defaults.placeholder_comment"),
+                               data: { comment_form_target: 'commentForm',
+                                       action: "input->comment-form#validateForm" } %>
+    <%= form.submit t('helpers.submit.create'), class: "btn btn-primary",
+                                                data:{ comment_form_target: 'submit',
+                                                       action: "click->comment-form#submitForm" },
+                                                disabled: true %>
+  </div>
+<% end %>

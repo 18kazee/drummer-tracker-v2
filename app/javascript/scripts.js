@@ -3,11 +3,12 @@
 * Copyright 2013-2021 Start Bootstrap
 * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-agency/blob/master/LICENSE)
 */
+
 //
 // Scripts
 // 
 
-window.addEventListener('DOMContentLoaded', event => {
+document.addEventListener('turbo:load', event => {
 
     // Navbar shrink function
     var navbarShrink = function () {
@@ -20,7 +21,6 @@ window.addEventListener('DOMContentLoaded', event => {
         } else {
             navbarCollapsible.classList.add('navbar-shrink')
         }
-
     };
 
     // Shrink the navbar 
@@ -38,33 +38,18 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     };
 
-    // Collapse responsive navbar when toggler is visible
-    const navbarToggler = document.body.querySelector('.navbar-toggler');
-    const responsiveNavItems = [].slice.call(
-        document.querySelectorAll('#navbarResponsive .nav-link')
-    );
-    responsiveNavItems.map(function (responsiveNavItem) {
-        responsiveNavItem.addEventListener('click', () => {
-            if (window.getComputedStyle(navbarToggler).display !== 'none') {
-                navbarToggler.click();
-            }
-        });
-    });    
-    
-    const observer = new MutationObserver(mutations => {
-        mutations.forEach(mutation => {
-            if (mutation.addedNodes.length) {
-                applyEffects();
-            }
-        });
-    });
-    const config = { childList: true, subtree: true };
-    observer.observe(document.body, config);
+    // Initialize the Bootstrap navbar toggler
+    var toggler = document.querySelector('.navbar-toggler');
+    var navbar = document.querySelector('#navbarResponsive');
 
+    if (toggler && navbar) {
+        toggler.addEventListener('click', () => {
+            navbar.classList.toggle('show');
+        });
+    }
 
-    
-    
-    function applyEffects() {
+    // Additional code to apply various effects
+    const applyEffects = () => {
         const isPostsPage = window.location.pathname.includes('/posts/');
 
         const applyPostEffects = (post) => {
@@ -91,11 +76,12 @@ window.addEventListener('DOMContentLoaded', event => {
             });
         };
 
-        const applyDrumerEffects = (drummer) => {
+        const applyDrummerEffects = (drummer) => {
             drummer.addEventListener('mouseover', () => {
                 drummer.style.cursor = 'pointer';
                 drummer.style.opacity = '0.5';
             });
+
             drummer.addEventListener('mouseout', () => {
                 drummer.style.cursor = 'default';
                 drummer.style.opacity = '1';
@@ -113,10 +99,10 @@ window.addEventListener('DOMContentLoaded', event => {
                 });
             });
         }
-        
+
         document.querySelectorAll('[id^="post-user-"]').forEach(applyUserEffects);
-        document.querySelectorAll('[id^="post-drummer-"]').forEach(applyDrumerEffects);
-    }
+        document.querySelectorAll('[id^="post-drummer-"]').forEach(applyDrummerEffects);
+    };
 
     applyEffects();
 });

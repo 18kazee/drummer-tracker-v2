@@ -7,6 +7,12 @@ import { application } from "./application"
 import AutocompleteController from "./autocomplete_controller"
 application.register("autocomplete", AutocompleteController)
 
+import CommentController from "./comment_controller"
+application.register("comment", CommentController)
+
+import CommentFormController from "./comment_form_controller"
+application.register("comment-form", CommentFormController)
+
 import FormController from "./form_controller"
 application.register("form", FormController)
 
