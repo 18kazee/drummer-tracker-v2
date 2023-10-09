@@ -4,5 +4,7 @@ ja:
       title: posts 
       subtitle: みんなのおすすめ投稿
     show:
+      title: post 
+      subtitle: 投稿
       comments: コメント一覧
       not_comments: コメントはまだありません
