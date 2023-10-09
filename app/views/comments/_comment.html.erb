@@ -1,20 +1,29 @@
-<div class="card">
-  <div class="card-body">
-    <div class="row">
-      <div class="col-2">
-        <%= link_to user_path(comment.user), class: 'post_user link' do %>
-          <%= image_tag comment.user.avatar.url, class: 'rounded-circle', id: "post-user-#{comment.user_id}" %>
-        <% end %>
-      </div>
-      <div class="col-7">
-        <p class="mb-1"><%= comment.user.name %></p>
-        <p class="mb-0"><%= comment.body %></p>
-      </div>
-      <div class="col-3 text-end">
-        <p class="text-muted"><%= l comment.created_at, format: :short %></p>
-        <%= link_to '削除', post_comment_path(comment), class: 'btn btn-outline-danger btn-sm',
-                                                        data: { turbo_method: :delete, 
-                                                                turbo_confirm: '本当に削除しますか？' } %>
+<div data-controller="comment"
+             data-comment-user-id="<%= comment.user_id %>">
+  <div id="comment_<%= comment.id %>">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-2">
+            <%= link_to user_path(comment.user), class: 'post_user link' do %>
+              <%= image_tag comment.user.avatar.url, class: 'rounded-circle', id: "post-user-#{comment.user_id}" %>
+            <% end %>
+          </div>
+          <div class="col-7">
+            <p class="mb-1"><%= comment.user.name %></p>
+            <p class="mb-0"><%= comment.body %></p>
+          </div>
+          <div class="col-3 text-end">
+            <p class="text-muted"><%= l comment.created_at, format: :short %></p>
+
+            <span data-comment-target="deleteBtn" style="display: none;">
+              <%= link_to '削除', post_comment_path(post_id: comment.post_id, id: comment.id),
+                                  class: 'btn btn-outline-danger btn-sm',
+                                  data: { turbo_method: :delete, 
+                                          turbo_confirm: '本当に削除しますか？' } %>
+            </span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
