@@ -6,7 +6,8 @@
                                data: { comment_form_target: 'commentForm',
                                        action: "input->comment-form#validateForm" } %>
     <%= form.submit t('helpers.submit.create'), class: "btn btn-primary",
-                                                data:{ comment_form_target: 'submit'},
+                                                data:{ comment_form_target: 'submit',
+                                                       action: "click->comment-form#submitForm" },
                                                 disabled: true %>
   </div>
 <% end %>
