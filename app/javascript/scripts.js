@@ -3,11 +3,12 @@
 * Copyright 2013-2021 Start Bootstrap
 * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-agency/blob/master/LICENSE)
 */
+
 //
 // Scripts
 // 
 
-window.addEventListener('DOMContentLoaded', event => {
+document.addEventListener('turbo:load', event => {
 
     // Navbar shrink function
     var navbarShrink = function () {
@@ -20,7 +21,6 @@ window.addEventListener('DOMContentLoaded', event => {
         } else {
             navbarCollapsible.classList.add('navbar-shrink')
         }
-
     };
 
     // Shrink the navbar 
@@ -38,86 +38,71 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     };
 
-    // Collapse responsive navbar when toggler is visible
-    const navbarToggler = document.body.querySelector('.navbar-toggler');
-    const responsiveNavItems = [].slice.call(
-        document.querySelectorAll('#navbarResponsive .nav-link')
-    );
-    responsiveNavItems.map(function (responsiveNavItem) {
-        responsiveNavItem.addEventListener('click', () => {
-            if (window.getComputedStyle(navbarToggler).display !== 'none') {
-                navbarToggler.click();
-            }
-        });
-    });    
-    
-    document.addEventListener("turbo:load", function() {
-      const observer = new MutationObserver(mutations => {
-        mutations.forEach(mutation => {
-          if (mutation.addedNodes.length) {
-            applyEffects();
-          }
-        });
-      });
+    // Initialize the Bootstrap navbar toggler
+    var toggler = document.querySelector('.navbar-toggler');
+    var navbar = document.querySelector('#navbarResponsive');
 
-      const config = { childList: true, subtree: true };
-      observer.observe(document.body, config);
+    if (toggler && navbar) {
+        toggler.addEventListener('click', () => {
+            navbar.classList.toggle('show');
+        });
+    }
 
-      function applyEffects() {
+    // Additional code to apply various effects
+    const applyEffects = () => {
         const isPostsPage = window.location.pathname.includes('/posts/');
 
         const applyPostEffects = (post) => {
-          post.addEventListener('mouseover', () => {
-            post.style.cursor = 'pointer';
-            post.classList.add('bg-light');
-          });
+            post.addEventListener('mouseover', () => {
+                post.style.cursor = 'pointer';
+                post.classList.add('bg-light');
+            });
 
-          post.addEventListener('mouseout', () => {
-            post.style.cursor = 'default';
-            post.classList.remove('bg-light');
-          });
+            post.addEventListener('mouseout', () => {
+                post.style.cursor = 'default';
+                post.classList.remove('bg-light');
+            });
         };
 
         const applyUserEffects = (user) => {
-          user.addEventListener('mouseover', () => {
-            user.style.cursor = 'pointer';
-            user.style.opacity = '0.5';
-          });
+            user.addEventListener('mouseover', () => {
+                user.style.cursor = 'pointer';
+                user.style.opacity = '0.5';
+            });
 
-          user.addEventListener('mouseout', () => {
-            user.style.cursor = 'default';
-            user.style.opacity = '1';
-          });
+            user.addEventListener('mouseout', () => {
+                user.style.cursor = 'default';
+                user.style.opacity = '1';
+            });
         };
 
         const applyDrummerEffects = (drummer) => {
-          drummer.addEventListener('mouseover', () => {
-            drummer.style.cursor = 'pointer';
-            drummer.style.opacity = '0.5';
-          });
+            drummer.addEventListener('mouseover', () => {
+                drummer.style.cursor = 'pointer';
+                drummer.style.opacity = '0.5';
+            });
 
-          drummer.addEventListener('mouseout', () => {
-            drummer.style.cursor = 'default';
-            drummer.style.opacity = '1';
-          });
+            drummer.addEventListener('mouseout', () => {
+                drummer.style.cursor = 'default';
+                drummer.style.opacity = '1';
+            });
         };
 
         if (!isPostsPage) {
-          document.querySelectorAll('[id^="post-"]').forEach(applyPostEffects);
+            document.querySelectorAll('[id^="post-"]').forEach(applyPostEffects);
 
-          document.querySelectorAll('.clickable-card').forEach(function(card) {
-            card.addEventListener('click', function(e) {
-              if (!e.target.closest('.link')) {
-                window.location.href = card.dataset.href;
-              }
+            document.querySelectorAll('.clickable-card').forEach(function(card) {
+                card.addEventListener('click', function(e) {
+                    if (!e.target.closest('.link')) {
+                        window.location.href = card.dataset.href;
+                    }
+                });
             });
-          });
         }
 
         document.querySelectorAll('[id^="post-user-"]').forEach(applyUserEffects);
         document.querySelectorAll('[id^="post-drummer-"]').forEach(applyDrummerEffects);
-      }
+    };
 
-      applyEffects();
-    });
+    applyEffects();
 });
