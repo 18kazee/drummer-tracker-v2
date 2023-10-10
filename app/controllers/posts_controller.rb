@@ -22,6 +22,12 @@ class PostsController < ApplicationController
     @comment = Comment.new
   end
 
+  def destroy
+    @post = current_user.posts.find(params[:id])
+    @post.destroy
+    redirect_to posts_path, notice: t('defaults.message.delete', item: Post.model_name.human)
+  end
+
   private
 
   def post_params
