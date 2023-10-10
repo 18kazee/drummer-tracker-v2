@@ -17,6 +17,8 @@ class User < ApplicationRecord
 
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :liked_posts, through: :likes, source: :post
 
   def send_activation_needed_email
     return if guest? # ゲストユーザーでない場合かつ未保存の場合にメールを送信
@@ -26,5 +28,22 @@ class User < ApplicationRecord
 
   def generate_activation_token
     self.activation_token = SecureRandom.hex(32)
+  end
+
+  def mine?(object)
+    id == object.user_id
+  end
+
+  def like(post)
+    liked_posts << post
+  end
+
+  def unlike(post)
+    liked_posts.delete(post)
+  end
+
+  # いいねしているかどうかの判定メソッド
+  def like?(post)
+    liked_posts.include?(post)
   end
 end

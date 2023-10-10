@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   end
   resources :posts do
     resources :comments, only: %i[create destroy]
+    resources :likes, only: %i[create destroy]
   end
   resources :contacts, only: %i[new create]
   resources :password_resets, only: %i[new create edit update]

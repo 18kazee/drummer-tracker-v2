@@ -1,0 +1,4 @@
+<%= link_to post_likes_path(post_id: post.id), class: 'post-like', data: { turbo_method: :post } do %>
+  <i class="far fa-heart heart_red me-2"></i>
+  <span class="me-3"><%= post.likes.count %></span>
+<% end %>

@@ -88,11 +88,27 @@ document.addEventListener('turbo:load', event => {
             });
         };
 
+        const applyPostLikeEffects = (like) => {
+            like.addEventListener('mouseover', () => {
+                like.style.cursor = 'pointer';
+                like.style.opacity = '0.5';
+            });
+
+            like.addEventListener('mouseout', () => {
+                like.style.cursor = 'default';
+                like.style.opacity = '1';
+            });
+        };
+
         if (!isPostsPage) {
             document.querySelectorAll('[id^="post-"]').forEach(applyPostEffects);
 
             document.querySelectorAll('.clickable-card').forEach(function(card) {
                 card.addEventListener('click', function(e) {
+                    if (e.target.closest('[id^="like-button-"]')) {
+                      return;
+                    }
+
                     if (!e.target.closest('.link')) {
                         window.location.href = card.dataset.href;
                     }
@@ -102,6 +118,7 @@ document.addEventListener('turbo:load', event => {
 
         document.querySelectorAll('[id^="post-user-"]').forEach(applyUserEffects);
         document.querySelectorAll('[id^="post-drummer-"]').forEach(applyDrummerEffects);
+        document.querySelectorAll('[id^="like-button-"]').forEach(applyPostLikeEffects);
     };
 
     applyEffects();
