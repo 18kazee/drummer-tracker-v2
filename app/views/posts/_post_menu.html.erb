@@ -1,0 +1,29 @@
+<%# ドロップダウンメニュー %>
+<div class="dropdown">
+  <%= link_to "#", role: "button", 
+                   id: "dropdownMenuLink",
+                   data: { bs_toggle: "dropdown" },
+                   "aria-expanded": "false" do %>
+    <i class="fas fa-ellipsis-v"></i>
+  <% end %>
+
+  <ul class="dropdown-menu">
+    <% if current_user.id == post.user_id %>
+      <li>
+        <%= link_to post_path(post), data: { turbo_confirm: '本当に削除しますか？',
+                                             turbo_method: :delete },
+                                     class: 'dropdown-item' do %>
+          <i class="fas fa-trash-alt"></i>
+          削除
+        <% end %>
+      </li>
+    <% else %>
+      <li>
+        <%= link_to "#", method: :post, class: 'dropdown-item' do %>
+          <i class="fas fa-exclamation-triangle"></i>
+          通報
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</div>
