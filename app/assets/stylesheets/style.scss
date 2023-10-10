@@ -10892,6 +10892,15 @@ p {
   border-radius: 100%;
 }
 
+a.post-like {
+    text-decoration: none !important;
+    color: inherit;
+}
+
+.heart_red {
+  color: #e54747;
+}
+
 #mainNav {
   padding-top: 1rem;
   padding-bottom: 1rem;
