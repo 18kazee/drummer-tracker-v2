@@ -1,0 +1,6 @@
+<% if current_user && current_user.like?(post) %>
+ <%= render partial: 'posts/unlike', locals: { post: post } %>
+<% else %>
+ <%= render partial: 'posts/like', locals: { post: post } %> 
+<% end %>
+
