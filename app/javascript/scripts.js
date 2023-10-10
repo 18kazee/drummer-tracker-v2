@@ -105,7 +105,7 @@ document.addEventListener('turbo:load', event => {
 
             document.querySelectorAll('.clickable-card').forEach(function(card) {
                 card.addEventListener('click', function(e) {
-                    if (e.target.closest('[id^="like-button-"]')) {
+                    if (e.target.closest('[id^="like-button-"]') || e.target.closest('.dropdown')) {
                       return;
                     }
 
@@ -114,6 +114,17 @@ document.addEventListener('turbo:load', event => {
                     }
                 });
             });
+        }
+        
+        const observer = new MutationObserver(() => {
+            applyEffects();
+        });
+
+        const config = { childList: true, subtree: true };
+
+        const targetNode = document.getElementById('post');
+        if (targetNode) {
+            observer.observe(targetNode, config);
         }
 
         document.querySelectorAll('[id^="post-user-"]').forEach(applyUserEffects);
